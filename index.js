@@ -6,6 +6,7 @@ require('dotenv').config()
 
 // Importing Handlers
 const modmail = require('./modmail')
+const MISCCommands = require('./MISCCommands')
 
 client.on('ready', () => { // Emits when the client is ready
     console.log(`${config.botname} is ready!`)
@@ -13,6 +14,7 @@ client.on('ready', () => { // Emits when the client is ready
 
     // Enables our handlers
     modmail(client)
+    MISCCommands(client)
 })
 
 client.login(process.env.TOKEN) // Logs into the bot.
