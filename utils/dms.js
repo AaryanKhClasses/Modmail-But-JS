@@ -1,13 +1,13 @@
 // Importing Modules
 const { MessageEmbed, Permissions, MessageAttachment } = require('discord.js')
-const config = require('./config.json')
+const config = require('../config.json')
 
 const { logsChannel, guildID, prefix, botname } = config // Getting confiuration variables
 
 module.exports = (client) => { // Exports the client
-    client.on('message', async(message) => { // Emits when a message is sent
+    client.on('messageCreate', async(message) => { // Emits when a message is sent
         const guild = client.guilds.cache.get(guildID) // Gets the guild
-        // if(message.channel.type === 'DM') { // Checks if the channel is a DM
+        if(message.channel.type === 'DM') { // Checks if the channel is a DM
             if(message.author.bot) return // If the message is a bot message, do nothing
 
             let str // String to hold the message
@@ -47,6 +47,6 @@ module.exports = (client) => { // Exports the client
             .setTimestamp()
             .setFooter(config.botname)
             await mailChannel.send({ embeds: [ embed ] })
-        // }
+        }
     })
 }
