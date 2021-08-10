@@ -1,6 +1,6 @@
 // Importing Modules
 const { Client, Intents } = require('discord.js')
-const client = new Client({ partials: ["CHANNEL", "USER", "REACTION", "MESSAGE"] , intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.DIRECT_MESSAGES] })
+const client = new Client({ partials: ["CHANNEL", "USER", "REACTION", "MESSAGE"], intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.DIRECT_MESSAGES] })
 const config = require('./config.json')
 require('dotenv').config()
 

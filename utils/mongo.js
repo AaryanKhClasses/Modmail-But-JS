@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 require('dotenv').config()
 
-module.exports = async() =>{
-    await mongoose.connect(process.env.MONGODB_URI, {
-        useNewUrlParser: true,
+module.exports = async () =>{
+    await mongoose.connect(process.env.MONGOURI, {
+		useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: false
+        useFindAndModify: false,
     })
     return mongoose
 }

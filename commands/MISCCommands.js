@@ -5,7 +5,7 @@ const config = require('../config.json')
 const { prefix, botname } = config
 
 module.exports = (client) => { // Export the client
-    client.on('messageCreate', async(message) => { // Emits when a message is sent
+    client.on('messageCreate', async (message) => { // Emits when a message is sent
         if(message.content.startsWith(`${prefix}ping`)) {
             const preEmbed = new MessageEmbed()
             .setColor('BLUE')
