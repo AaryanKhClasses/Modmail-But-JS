@@ -1,6 +1,7 @@
 // Importing Modules
 const { MessageEmbed, Permissions, MessageAttachment } = require('discord.js')
 const config = require('../config.json')
+const threads = require('../models/threads')
 
 const { guildID, prefix, botname } = config // Getting confiuration variables
 
@@ -42,7 +43,7 @@ module.exports = (client) => { // Exports the client
                 .addField('Nickname', target.nickname || message.author.username, true)
                 .addField('Previous Logs', `hasPreviousLogsNO`, true)
                 .addField('Roles', str)
-                await mailChannel.send({ embeds: [ introEmbed ] }) // Send the intro embed
+                await mailChannel.send({ embeds: [ introEmbed ] })
 
                 const logEmbed = new MessageEmbed()
                 .setColor('GREEN')
@@ -53,6 +54,9 @@ module.exports = (client) => { // Exports the client
                 .addField('User', message.author.tag, true)
                 .addField('UserID', message.author.id, true)
                 logsChannel.send({ embeds: [ logEmbed ] }) // Send the log embed
+
+                const newThread = new threads({ userID: message.author.id, channelID: mailChannel.id }) // Creates a new thread
+                newThread.save() // Saves the thread
             }
 
             const embed = new MessageEmbed()
